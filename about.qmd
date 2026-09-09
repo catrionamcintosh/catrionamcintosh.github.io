@@ -2,4 +2,15 @@
 title: "About"
 ---
 
-About this site
+## Background
+where you grew up or studied, and what you worked on before MDS.
+I grew up in Fredericton, New Brunswick, Canada before moving to Montreal to complete my BSc Software Engineering at McGill University. From there I moved to Dublin, Ireland to begin my career as a software developer.
+
+## Why Data Science
+I chose to pursue data science because of my belief in the power of data to solve important problems. I enrolled in UBC's MDS program to build on my technical background and establish the foundation needed to pursue data science.
+
+## Outside of Data Science
+In my free time I enjoy playing guitar and piano. I also play ultimate frisbee and love to ski in the winter. I also have the unenviable fate of being a Tottenham Hotspur fan.
+
+
+

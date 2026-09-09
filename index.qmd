@@ -8,4 +8,3 @@ about:
 
 I am from Fredericton, New Brunswick, Canada. Before starting the MDS program, I studied software engineering and worked as a software developer. I am looking forward to building on my technical background and developing stronger data science skills throughout the program. 
 
-In this milestone we set up the folder structure for the course and practice basic terminal commands. It also includes this README and screenshots documenting the terminal work.

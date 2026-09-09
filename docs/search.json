@@ -4,13 +4,34 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site"
+    "text": "where you grew up or studied, and what you worked on before MDS. I grew up in Fredericton, New Brunswick, Canada before moving to Montreal to complete my BSc Software Engineering at McGill University. From there I moved to Dublin, Ireland to begin my career as a software developer."
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Catriona McIntosh",
     "section": "",
-    "text": "I am from Fredericton, New Brunswick, Canada. Before starting the MDS program, I studied software engineering and worked as a software developer. I am looking forward to building on my technical background and developing stronger data science skills throughout the program.\nIn this milestone we set up the folder structure for the course and practice basic terminal commands. It also includes this README and screenshots documenting the terminal work."
+    "text": "I am from Fredericton, New Brunswick, Canada. Before starting the MDS program, I studied software engineering and worked as a software developer. I am looking forward to building on my technical background and developing stronger data science skills throughout the program."
+  },
+  {
+    "objectID": "about.html#background",
+    "href": "about.html#background",
+    "title": "About",
+    "section": "",
+    "text": "where you grew up or studied, and what you worked on before MDS. I grew up in Fredericton, New Brunswick, Canada before moving to Montreal to complete my BSc Software Engineering at McGill University. From there I moved to Dublin, Ireland to begin my career as a software developer."
+  },
+  {
+    "objectID": "about.html#why-data-science",
+    "href": "about.html#why-data-science",
+    "title": "About",
+    "section": "Why Data Science",
+    "text": "Why Data Science\nI chose to pursue data science because of my belief in the power of data to solve important problems. I enrolled in UBC’s MDS program to build on my technical background and establish the foundation needed to pursue data science."
+  },
+  {
+    "objectID": "about.html#outside-of-data-science",
+    "href": "about.html#outside-of-data-science",
+    "title": "About",
+    "section": "Outside of Data Science",
+    "text": "Outside of Data Science\nIn my free time I enjoy playing guitar and piano. I also play ultimate frisbee and love to ski in the winter. I also have the unenviable fate of being a Tottenham Hotspur fan."
   }
 ]
