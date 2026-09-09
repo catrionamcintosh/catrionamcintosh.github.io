@@ -6,5 +6,5 @@ about:
   image: images/profile.jpg
 ---
 
-I am from Fredericton, New Brunswick, Canada. Before starting the MDS program, I studied software engineering and worked as a software developer. I am looking forward to building on my technical background and developing stronger data science skills throughout the program. 
+I am from Fredericton, New Brunswick, Canada. Before starting the UBC MDS program, I studied software engineering and worked as a software developer. I am looking forward to building on my technical background and developing stronger data science skills throughout the program. 
 

@@ -10,7 +10,7 @@ I grew up in Fredericton, New Brunswick, Canada before moving to Montreal to com
 I chose to pursue data science because of my belief in the power of data to solve important problems. I enrolled in UBC's MDS program to build on my technical background and establish the foundation needed to pursue data science.
 
 ## Outside of Data Science
-In my free time I enjoy playing guitar and piano. I also play ultimate frisbee and love to ski in the winter. I also have the unenviable fate of being a Tottenham Hotspur fan.
+In my free time I enjoy playing guitar and piano. I also play ultimate frisbee, hike, and love to ski in the winter. I’m also a big football fan, although I have the unenviable fate of supporting Tottenham Hotspur.
 
 
 
