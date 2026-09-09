@@ -1,10 +1,10 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Blog",
     "section": "",
-    "text": "where you grew up or studied, and what you worked on before MDS. I grew up in Fredericton, New Brunswick, Canada before moving to Montreal to complete my BSc Software Engineering at McGill University. From there I moved to Dublin, Ireland to begin my career as a software developer."
+    "text": "My first weeks in MDS\n\n\n\n\n\n\n\n\nSep 9, 2026\n\n\nCatriona McIntosh\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -12,6 +12,20 @@
     "title": "Catriona McIntosh",
     "section": "",
     "text": "I am from Fredericton, New Brunswick, Canada. Before starting the UBC MDS program, I studied software engineering and worked as a software developer. I am looking forward to building on my technical background and developing stronger data science skills throughout the program."
+  },
+  {
+    "objectID": "posts/first-weeks/index.html",
+    "href": "posts/first-weeks/index.html",
+    "title": "My first weeks in MDS",
+    "section": "",
+    "text": "Orientation day on campus.\n\n\nIn the first week of MDS we had 3 days of orientation. This included many workshops on program policies, mental health, and career advising. It was also a great chance to get to know other students in the program. We completed a fun campus goose chase, which can be seen in the photo!\nThe following week we started all of our classes. It has been very busy and has required a lot of time management and organization but I am beginning to get to grips with the demands of the program. I am really enjoying what I am learning and I was surprised by how quickly I made friends in the program."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "where you grew up or studied, and what you worked on before MDS. I grew up in Fredericton, New Brunswick, Canada before moving to Montreal to complete my BSc Software Engineering at McGill University. From there I moved to Dublin, Ireland to begin my career as a software developer."
   },
   {
     "objectID": "about.html#background",
@@ -33,19 +47,5 @@
     "title": "About",
     "section": "Outside of Data Science",
     "text": "Outside of Data Science\nIn my free time I enjoy playing guitar and piano. I also play ultimate frisbee, hike, and love to ski in the winter. I’m also a big football fan, although I have the unenviable fate of supporting Tottenham Hotspur."
-  },
-  {
-    "objectID": "blog.html",
-    "href": "blog.html",
-    "title": "Blog",
-    "section": "",
-    "text": "My first weeks in MDS\n\n\n\n\n\n\n\n\nSep 9, 2026\n\n\nCatriona McIntosh\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "posts/first-weeks/index.html",
-    "href": "posts/first-weeks/index.html",
-    "title": "My first weeks in MDS",
-    "section": "",
-    "text": "Orientation day on campus.\n\n\nIn the first week of MDS we had 3 days of orientation. This included many workshops on program policies, mental health, and career advising. It was also a great chance to get to know other students in the program. We completed a fun campus goose chase, which can be seen in the photo!\nThe following week we started all of our classes. It has been very busy and has required a lot of time management and organization but I am beginning to get to grips with the demands of the program. I am really enjoying what I am learning and I was surprised by how quickly I made friends in the program."
   }
 ]
