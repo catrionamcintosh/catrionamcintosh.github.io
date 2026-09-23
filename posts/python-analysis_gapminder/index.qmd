@@ -2,4 +2,94 @@
 title: "Analysis of Gapminder Dataset using Python"
 author: "Catriona McIntosh"
 date: 2026-09-23
+jupyter: python3
+
 ---
+
+```{python}
+#| label: setup
+#| warning: false
+import pandas as pd
+import matplotlib.pyplot as plt
+from gapminder import gapminder
+```
+ 
+This post uses the gapminder dataset to look at life expectancy across 142
+different countries from 1952 to 2007.
+ 
+Data: Based on free material from [GAPMINDER.ORG](https://www.gapminder.org/data/),
+CC-BY licence, via the copy of the data included in
+[plotly](https://plotly.com/python-api-reference/generated/plotly.express.data.html).
+ 
+## Life Expectancy by continent
+ 
+I took the averaged life expectancy across the countries in each continent for
+every survey year (1952–2007) to compare how life expectancy has changed in
+each continent.
+ 
+```{python}
+continent_trend = (
+    gapminder
+    .groupby(["continent", "year"], as_index=False)
+    .agg(mean_life=("lifeExp", "mean"))
+)
+continent_trend.head()
+```
+
+ 
+```{python}
+#| label: fig-continent-trend
+#| fig-cap: "Mean life expectancy by continent, 1952–2007."
+fig, ax = plt.subplots(figsize=(8, 5))
+for continent, group in continent_trend.groupby("continent"):
+    ax.plot(group["year"], group["mean_life"], marker="o", linewidth=2,
+            label=continent)
+ax.set_ylabel("Mean life expectancy (years)")
+ax.legend(frameon=False)
+plt.show()
+```
+ 
+
+As @fig-continent-trend shows, life expectancy has consistently been highest
+in Oceania (which in this dataset is only Australia and New Zealand) and lowest
+in Africa. Every continent's life expectancy rose between 1952 and 2007, and
+all except Africa increased in every survey year. Africa's average stalled
+from the late 1980s and dipped slightly between 1992 and 2002, before rising
+again by 2007.
+ 
+## Which country gained the most?
+ 
+Next I calculated the change in life expectancy for each country between
+1952 and 2007.
+ 
+```{python}
+life_change = (
+    gapminder[gapminder["year"].isin([1952, 2007])]
+    .pivot_table(index=["country", "continent"], columns="year",
+                 values="lifeExp")
+    .reset_index()
+)
+life_change.columns = ["country", "continent", "y1952", "y2007"]
+life_change["change"] = life_change["y2007"] - life_change["y1952"]
+life_change = life_change.sort_values("change", ascending=False,
+                                      ignore_index=True)
+ 
+n_declined = int((life_change["change"] < 0).sum())
+top_country = life_change["country"].iloc[0]
+top_change = f"{life_change['change'].iloc[0]:.1f}"
+bottom_country = life_change["country"].iloc[-1]
+bottom_change = f"{life_change['change'].iloc[-1]:.1f}"
+```
+ 
+
+The five biggest gains and the five biggest losses:
+ 
+```{python}
+#| label: life-change-extremes
+pd.concat([life_change.head(5), life_change.tail(5)]).round(1)
+```
+ 
+`{python} top_country` gained the most, `{python} top_change` years. At the
+other end, `{python} n_declined` countries had a *lower* life expectancy in
+2007 than in 1952. The largest drop was in `{python} bottom_country`
+(`{python} bottom_change` years).

@@ -14,11 +14,39 @@
     "text": "I am from Fredericton, New Brunswick, Canada. Before starting the UBC MDS program, I studied software engineering and worked as a software developer. I am looking forward to building on my technical background and developing stronger data science skills throughout the program."
   },
   {
+    "objectID": "posts/r-analysis_gapminder/index.html",
+    "href": "posts/r-analysis_gapminder/index.html",
+    "title": "Analysis of Gapminder Dataset using R",
+    "section": "",
+    "text": "library(tidyverse)\nlibrary(gapminder)\nThis post uses the gapminder dataset to look at life expectancy across 142 different countries from 1952 to 2007\nData: Based on free material from GAPMINDER.ORG, CC-BY licence, via the gapminder R package (Jennifer Bryan)."
+  },
+  {
+    "objectID": "posts/r-analysis_gapminder/index.html#life-expectancy-by-continent",
+    "href": "posts/r-analysis_gapminder/index.html#life-expectancy-by-continent",
+    "title": "Analysis of Gapminder Dataset using R",
+    "section": "Life Expectancy by continent",
+    "text": "Life Expectancy by continent\nI took the averaged life expectancy across the countries in each continent for every survey year (1952-2007) to compare how life expectancy has changed in each continent.\n\ncontinent_trend &lt;- gapminder |&gt;\n  group_by(continent, year) |&gt;\n  summarise(mean_life = mean(lifeExp), .groups = \"drop\")\n\n\nggplot(continent_trend, aes(year, mean_life, colour = continent)) +\n  geom_line(linewidth = 1) +\n  geom_point() +\n  labs(x = NULL, y = \"Mean life expectancy (years)\", colour = NULL) \n\n\n\n\n\n\n\nFigure 1: Mean life expectancy by continent, 1952–2007.\n\n\n\n\n\nAs Figure 1 shows that life expectancy has consistently been highest in Oceania, and lowest in Africa. Each continent has seen an increase in life expectancy between 1952 and 2007, with each continent’s life expectancy increasing monotonically except for Africa. There was a dip in life expectancy in Africa between the late 1990s and early 2000s before increasing again."
+  },
+  {
+    "objectID": "posts/r-analysis_gapminder/index.html#which-country-gained-the-most",
+    "href": "posts/r-analysis_gapminder/index.html#which-country-gained-the-most",
+    "title": "Analysis of Gapminder Dataset using R",
+    "section": "Which country gained the most?",
+    "text": "Which country gained the most?\nNext I calculated the change in life expectancy for each country between 1952 and 2007.\n\nlife_change &lt;- gapminder |&gt;\n  filter(year %in% c(1952, 2007)) |&gt;\n  select(country, continent, year, lifeExp) |&gt;\n  pivot_wider(names_from = year, values_from = lifeExp, names_prefix = \"y\") |&gt;\n  mutate(change = y2007 - y1952) |&gt;\n  arrange(desc(change))\n \nn_declined &lt;- sum(life_change$change &lt; 0)\ntop &lt;- slice_head(life_change, n = 1)\nbottom &lt;- slice_tail(life_change, n = 1)\n\n\nbind_rows(slice_head(life_change, n = 5), slice_tail(life_change, n = 5))\n\n\n\n\nTop/Bottom 5 changes in life expectancy\n\n\nOman gained the most, 38.1 years. At the other end, 2 countries had a lower life expectancy in 2007 than in 1952. The largest drop was in Zimbabwe (-5 years)."
+  },
+  {
     "objectID": "posts/first-weeks/index.html",
     "href": "posts/first-weeks/index.html",
     "title": "My first weeks in MDS",
     "section": "",
     "text": "Campus goose chase during orientation.\n\n\nIn the first week of MDS we had 3 days of orientation. This included many workshops on program policies, mental health, and career advising. It was also a great chance to get to know other students in the program. We completed a fun campus goose chase, which can be seen in the photo!\nThe following week we started all of our classes. It has been very busy and has required a lot of time management and organization but I am beginning to get to grips with the demands of the program. I was surprised by how quickly I made friends in the program.\nI am really enjoying what I am learning and looking forward to what is to come."
+  },
+  {
+    "objectID": "posts/python-analysis_gapminder/index.html",
+    "href": "posts/python-analysis_gapminder/index.html",
+    "title": "Analysis of Gapminder Dataset using Python",
+    "section": "",
+    "text": "import pandas as pd\nimport matplotlib.pyplot as plt\nfrom gapminder import gapminder\n\nThis post uses the gapminder dataset to look at life expectancy across 142 different countries from 1952 to 2007.\nData: Based on free material from GAPMINDER.ORG, CC-BY licence, via the copy of the data included in plotly."
   },
   {
     "objectID": "about.html",

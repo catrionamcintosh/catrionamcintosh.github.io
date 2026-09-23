@@ -6,7 +6,9 @@ dependencies = [
     "gapminder>=0.1",
     "ipykernel>=7.3.0",
     "jupyter>=1.1.1",
+    "matplotlib>=3.11.2",
     "numpy>=2.5.3",
     "pandas>=3.0.6",
+    "setuptools<81",
     "tidyverse>=0.1.0",
 ]
