@@ -25,6 +25,8 @@ I took the averaged life expectancy across the countries in each continent for e
 continent_trend <- gapminder |>
   group_by(continent, year) |>
   summarise(mean_life = mean(lifeExp), .groups = "drop")
+
+head(continent_trend)
 ```
 
 ```{r}

@@ -66,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -110,6 +110,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -160,7 +163,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section"></a></li>
+  <li><a href="#life-expectancy-by-continent" id="toc-life-expectancy-by-continent" class="nav-link active" data-scroll-target="#life-expectancy-by-continent">Life Expectancy by continent</a></li>
+  <li><a href="#which-country-gained-the-most" id="toc-which-country-gained-the-most" class="nav-link" data-scroll-target="#which-country-gained-the-most">Which country gained the most?</a></li>
   </ul>
 </nav>
     </div>
@@ -198,15 +202,223 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="setup" class="cell" data-execution_count="1">
+<div id="setup" class="cell" data-message="false" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gapminder <span class="im">import</span> gapminder</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>This post uses the gapminder dataset to look at life expectancy across 142 different countries from 1952 to 2007.</p>
 <p>Data: Based on free material from <a href="https://www.gapminder.org/data/">GAPMINDER.ORG</a>, CC-BY licence, via the copy of the data included in <a href="https://plotly.com/python-api-reference/generated/plotly.express.data.html">plotly</a>.</p>
-<section id="section" class="level1">
-<h1></h1>
+<section id="life-expectancy-by-continent" class="level2">
+<h2 class="anchored" data-anchor-id="life-expectancy-by-continent">Life Expectancy by continent</h2>
+<p>I took the averaged life expectancy across the countries in each continent for every survey year (1952–2007) to compare how life expectancy has changed in each continent.</p>
+<div id="9ed79d7b" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>continent_trend <span class="op">=</span> (</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    gapminder</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    .groupby([<span class="st">"continent"</span>, <span class="st">"year"</span>], as_index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    .agg(mean_life<span class="op">=</span>(<span class="st">"lifeExp"</span>, <span class="st">"mean"</span>))</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>continent_trend.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">continent</th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">mean_life</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>Africa</td>
+<td>1952</td>
+<td>39.135500</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>Africa</td>
+<td>1957</td>
+<td>41.266346</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>Africa</td>
+<td>1962</td>
+<td>43.319442</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>Africa</td>
+<td>1967</td>
+<td>45.334538</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>Africa</td>
+<td>1972</td>
+<td>47.450942</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="cell-fig-continent-trend" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> continent, group <span class="kw">in</span> continent_trend.groupby(<span class="st">"continent"</span>):</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    ax.plot(group[<span class="st">"year"</span>], group[<span class="st">"mean_life"</span>], marker<span class="op">=</span><span class="st">"o"</span>, linewidth<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>            label<span class="op">=</span>continent)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Mean life expectancy (years)"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>ax.legend(frameon<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="fig-continent-trend" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-continent-trend-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-continent-trend-output-1.png" width="660" height="411" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-continent-trend-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Mean life expectancy by continent, 1952–2007.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>As <a href="#fig-continent-trend" class="quarto-xref">Figure&nbsp;1</a> shows, life expectancy has consistently been highest in Oceania (which in this dataset is only Australia and New Zealand) and lowest in Africa. Every continent’s life expectancy rose between 1952 and 2007, and all except Africa increased in every survey year. Africa’s average stalled from the late 1980s and dipped slightly between 1992 and 2002, before rising again by 2007.</p>
+</section>
+<section id="which-country-gained-the-most" class="level2">
+<h2 class="anchored" data-anchor-id="which-country-gained-the-most">Which country gained the most?</h2>
+<p>Next I calculated the change in life expectancy for each country between 1952 and 2007.</p>
+<div id="27007ef6" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>life_change <span class="op">=</span> (</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    gapminder[gapminder[<span class="st">"year"</span>].isin([<span class="dv">1952</span>, <span class="dv">2007</span>])]</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    .pivot_table(index<span class="op">=</span>[<span class="st">"country"</span>, <span class="st">"continent"</span>], columns<span class="op">=</span><span class="st">"year"</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                 values<span class="op">=</span><span class="st">"lifeExp"</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    .reset_index()</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>life_change.columns <span class="op">=</span> [<span class="st">"country"</span>, <span class="st">"continent"</span>, <span class="st">"1952"</span>, <span class="st">"2007"</span>]</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>life_change[<span class="st">"change"</span>] <span class="op">=</span> life_change[<span class="st">"2007"</span>] <span class="op">-</span> life_change[<span class="st">"1952"</span>]</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>life_change <span class="op">=</span> life_change.sort_values(<span class="st">"change"</span>, ascending<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>                                      ignore_index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>n_declined <span class="op">=</span> <span class="bu">int</span>((life_change[<span class="st">"change"</span>] <span class="op">&lt;</span> <span class="dv">0</span>).<span class="bu">sum</span>())</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>top_country <span class="op">=</span> life_change[<span class="st">"country"</span>].iloc[<span class="dv">0</span>]</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>top_change <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>life_change[<span class="st">'change'</span>]<span class="sc">.</span>iloc[<span class="dv">0</span>]<span class="sc">:.1f}</span><span class="ss">"</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>bottom_country <span class="op">=</span> life_change[<span class="st">"country"</span>].iloc[<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>bottom_change <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>life_change[<span class="st">'change'</span>]<span class="sc">.</span>iloc[<span class="op">-</span><span class="dv">1</span>]<span class="sc">:.1f}</span><span class="ss">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The five biggest gains and the five biggest losses:</p>
+<div id="cell-life-change-extremes" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pd.concat([life_change.head(<span class="dv">5</span>), life_change.tail(<span class="dv">5</span>)]).<span class="bu">round</span>(<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="life-change-extremes" class="cell-output cell-output-display" data-execution_count="5">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">country</th>
+<th data-quarto-table-cell-role="th">continent</th>
+<th data-quarto-table-cell-role="th">1952</th>
+<th data-quarto-table-cell-role="th">2007</th>
+<th data-quarto-table-cell-role="th">change</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>Oman</td>
+<td>Asia</td>
+<td>37.6</td>
+<td>75.6</td>
+<td>38.1</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>Vietnam</td>
+<td>Asia</td>
+<td>40.4</td>
+<td>74.2</td>
+<td>33.8</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>Indonesia</td>
+<td>Asia</td>
+<td>37.5</td>
+<td>70.6</td>
+<td>33.2</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>Saudi Arabia</td>
+<td>Asia</td>
+<td>39.9</td>
+<td>72.8</td>
+<td>32.9</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>Libya</td>
+<td>Africa</td>
+<td>42.7</td>
+<td>74.0</td>
+<td>31.2</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">137</th>
+<td>Botswana</td>
+<td>Africa</td>
+<td>47.6</td>
+<td>50.7</td>
+<td>3.1</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">138</th>
+<td>Lesotho</td>
+<td>Africa</td>
+<td>42.1</td>
+<td>42.6</td>
+<td>0.5</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">139</th>
+<td>Zambia</td>
+<td>Africa</td>
+<td>42.0</td>
+<td>42.4</td>
+<td>0.3</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">140</th>
+<td>Swaziland</td>
+<td>Africa</td>
+<td>41.4</td>
+<td>39.6</td>
+<td>-1.8</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">141</th>
+<td>Zimbabwe</td>
+<td>Africa</td>
+<td>48.5</td>
+<td>43.5</td>
+<td>-5.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Oman gained the most, 38.1 years. At the other end, 2 countries had a <em>lower</em> life expectancy in 2007 than in 1952. The largest drop was in Zimbabwe (-5.0 years).</p>
 
 
 </section>

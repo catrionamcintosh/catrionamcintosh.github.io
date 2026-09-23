@@ -9,6 +9,7 @@ jupyter: python3
 ```{python}
 #| label: setup
 #| warning: false
+#| message: false
 import pandas as pd
 import matplotlib.pyplot as plt
 from gapminder import gapminder
@@ -69,8 +70,8 @@ life_change = (
                  values="lifeExp")
     .reset_index()
 )
-life_change.columns = ["country", "continent", "y1952", "y2007"]
-life_change["change"] = life_change["y2007"] - life_change["y1952"]
+life_change.columns = ["country", "continent", "1952", "2007"]
+life_change["change"] = life_change["2007"] - life_change["1952"]
 life_change = life_change.sort_values("change", ascending=False,
                                       ignore_index=True)
  
