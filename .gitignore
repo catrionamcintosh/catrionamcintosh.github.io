@@ -2,3 +2,5 @@
 **/*.quarto_ipynb
 .DS_Store
 _site/
+.Rproj.user
+catrionamcintosh.github.io.Rproj
