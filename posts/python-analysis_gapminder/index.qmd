@@ -19,8 +19,7 @@ This post uses the gapminder dataset to look at life expectancy across 142
 different countries from 1952 to 2007.
  
 Data: Based on free material from [GAPMINDER.ORG](https://www.gapminder.org/data/),
-CC-BY licence, via the copy of the data included in
-[plotly](https://plotly.com/python-api-reference/generated/plotly.express.data.html).
+CC-BY licence, from the gapminder Python package.
  
 ## Life Expectancy by continent
  

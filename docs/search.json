@@ -18,7 +18,7 @@
     "href": "posts/r-analysis_gapminder/index.html",
     "title": "Analysis of Gapminder Dataset using R",
     "section": "",
-    "text": "library(tidyverse)\nlibrary(gapminder)\nThis post uses the gapminder dataset to look at life expectancy across 142 different countries from 1952 to 2007\nData: Based on free material from GAPMINDER.ORG, CC-BY licence, via the gapminder R package (Jennifer Bryan)."
+    "text": "library(tidyverse)\nlibrary(gapminder)\nThis post uses the gapminder dataset to look at life expectancy across 142 different countries from 1952 to 2007\nData: Based on free material from GAPMINDER.ORG, CC-BY licence, via the gapminder R package."
   },
   {
     "objectID": "posts/r-analysis_gapminder/index.html#life-expectancy-by-continent",
@@ -46,7 +46,7 @@
     "href": "posts/python-analysis_gapminder/index.html",
     "title": "Analysis of Gapminder Dataset using Python",
     "section": "",
-    "text": "import pandas as pd\nimport matplotlib.pyplot as plt\nfrom gapminder import gapminder\nThis post uses the gapminder dataset to look at life expectancy across 142 different countries from 1952 to 2007.\nData: Based on free material from GAPMINDER.ORG, CC-BY licence, via the copy of the data included in plotly."
+    "text": "import pandas as pd\nimport matplotlib.pyplot as plt\nfrom gapminder import gapminder\nThis post uses the gapminder dataset to look at life expectancy across 142 different countries from 1952 to 2007.\nData: Based on free material from GAPMINDER.ORG, CC-BY licence, from the gapminder Python package."
   },
   {
     "objectID": "posts/python-analysis_gapminder/index.html#life-expectancy-by-continent",
